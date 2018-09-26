@@ -1,5 +1,5 @@
 
-// these are all imported packages from f
+// these are all imported packages from ftc
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -7,8 +7,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-
+// null is used as a place holder for each value; think of it as a variable that's empty
+// the code below is for each motor and attatchment on the robot {DcMotors, Sirvos, color sensors and attachments}
 public class HardwarePushBot{
+
     public static DcMotor rightFrontDrive = null;
     public static DcMotor leftFrontDrive = null;
     public static DcMotor rightBackDrive = null;
@@ -34,7 +36,7 @@ public class HardwarePushBot{
     /* Constructor */
     public HardwarePushBot(){
     }
-
+// the information like ("rfd") is for what will show up on the phone on the robot
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
         hwMap = ahwMap;
@@ -56,17 +58,17 @@ public class HardwarePushBot{
         colorSense = hwMap.colorSensor.get("cs");     //12 Bus3
         colorSensorArm = hwMap.servo.get("csa");      //4
         colorSensorArmRotate = hwMap.servo.get("csa1");
-
+// the power is always set to 0
         rightFrontDrive.setPower(0);
         leftFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
         leftBackDrive.setPower(0);
-
+// The Run_WITHOUT_ENCODER specifies not to use the encoder and instead to use time to calculate distance {using the encoder is more complicated}
         rightFrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftFrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
+// this code tells the robot what direction to move {either forwards or backwards}
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
