@@ -2,8 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 
 
-public class DriveMethods extends HardwarePushBot{
+public class DriveMethods extends HardwarePushBot{ // HardwarePushBot controls all of the hardware components of the robot
 
+// The 4 different wheels on the Chassey are defined by the following code
     public static void driveRight(double speed){
         rightFrontDrive.setPower(speed);
         rightBackDrive.setPower(speed);
@@ -18,7 +19,7 @@ public class DriveMethods extends HardwarePushBot{
     public static void stopRightMotors() { 
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
-    }
+    }                                      // the speed powers are always set to 0
 
     public static void stopLeftMotors(){
         leftFrontDrive.setPower(0);
@@ -26,11 +27,11 @@ public class DriveMethods extends HardwarePushBot{
     }
 
     
-
+// the glyph lift functions are defined below
     public static void glyphLift(double speed){
         glyphLift.setPower(speed);
     }
-
+// this code defines the specific position of the sirvo motors for opening the glyph lift
     public static void openGlyph (){
         glyphLiftRight.setPosition(0.55);//0.55
         glyphLiftLeft.setPosition(0.4);//0.4
@@ -38,6 +39,7 @@ public class DriveMethods extends HardwarePushBot{
         glyphLiftLeft2.setPosition(0.4);
     }
 
+// this code defines the specific position of the sirvo motors for closing  the glyph lift
     public static void closeGlyph (){
         glyphLiftRight.setPosition(0.25);
         glyphLiftLeft.setPosition(0.6);
