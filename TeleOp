@@ -1,5 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+//TeleOp controls the gamepad in relation to how the robot moves {ex. if you move the joystick up, what the robot will}
+// gamepad {or controller} 2 controls attachments on the robot; gamepad {or controller} 1 controls the movement of the actual robot {forward, right etc.}
 
+package org.firstinspires.ftc.teamcode;
+// these are imported packages from ftc
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -21,27 +24,29 @@ public class New_TeleOp extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
 
         robot.init(hardwareMap);
-
+// this code shows what will show up on the phone to notify the drivers {ex. "Initialized" will show up on the phones}
         telemetry.addData("Status", "Initialized");
         telemetry.addData("Hello Driver", "Press Play Button");
         telemetry.update();
 
         waitForStart();
         while (opModeIsActive()) {
-
+// this code is only for gampad {or controller} 1; says how much you need to move the joystick for the robot to move a certain distance
             double RIGHTPOW = -gamepad1.right_stick_y * 0.8;
             double LEFTPOW = -gamepad1.left_stick_y * 0.8;
             double REVERSE_THRES = -0.5;
             double FORWARD_THRES = 0.5;
             double drive_Speed = 0.6;
             double turn_Speed = 0.4;
-
+// this code is only specific for gamepad {or controller} 2  says how much you need to move the joystick for the robot to move a certain distance
             double LIFTPOW = -gamepad2.left_stick_y;
             double UP_THRES = 0.5;
             double DOWN_THRES = -0.5;
 
-            
+            // this is a conditional statement- uses boolean {true or false} in order to say if the code is satisfied then it will run; if the code is not satisfied it will not be executed
             if(RIGHTPOW < FORWARD_THRES && RIGHTPOW > REVERSE_THRES && LEFTPOW < FORWARD_THRES && LEFTPOW > REVERSE_THRES){
+            //!= means not equal to 
+            // conditional statements are also used in the autonomous period
                 DriveMethods.stopRightMotors();
                 DriveMethods.stopLeftMotors();
             }else if(RIGHTPOW != 0.0 && LEFTPOW != 0.0) {
@@ -58,7 +63,7 @@ public class New_TeleOp extends LinearOpMode{
                 DriveMethods.driveLeft(LEFTPOW * turn_Speed);
                 DriveMethods.driveRight(RIGHTPOW * turn_Speed);
             }
-
+// the lift power is controlled here based on the conditional statements {gamepad 2 controls this}
             if(LIFTPOW < UP_THRES && LIFTPOW > DOWN_THRES) {
                 DriveMethods.glyphLift(0);
 
